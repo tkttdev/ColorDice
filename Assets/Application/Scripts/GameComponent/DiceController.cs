@@ -2,30 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveMode : int {
-	STOP = 0,
-	MOVE_UP = 1,
-	MOVE_RIGHT = 2,
-	MOVE_DOWN = 3,
-	MOVE_LEFT = 4,
-}
-
 public class DiceController : MonoBehaviour {
 
-	[SerializeField]private float speed = 3;
-	private MoveMode moveMode = MoveMode.STOP;
-	private float moveTime = 0f;
-	private Vector3 rotateAxis = Vector3.zero;
-	private Vector3 startPos = Vector3.zero;
-	private Vector3 endPos = Vector3.zero;
+	[SerializeField]private float sideLength = 2f;
+	private bool isMove = false;
+	private Vector3 startPos;
+	private Vector3 purposePos;
+	private Vector3 rotateDir;
 	private DiceInputHandler inputHandler = new DiceInputHandler ();
 
-	void Start(){
+	private void Start(){
 	}
 
 
-	void Update () {
-		if (moveMode == MoveMode.STOP) {
+	private void Update () {
+		if (!isMove) {
 			Command cmd = inputHandler.HandleInput ();
 			if (cmd != null) {
 				cmd.Execute (this);
@@ -33,5 +24,14 @@ public class DiceController : MonoBehaviour {
 		}
 	}
 
+	public void Move(Vector3 rotateDir, float speed = 1.2f){
+		isMove = true;
+		purposePos = transform.position + rotateDir*sideLength;
+		iTween.MoveTo (gameObject, iTween.Hash ("x", purposePos.x, "z", purposePos.z, "oncomplete", "MoveEnd", "time", 1f / speed, "easeType", iTween.EaseType.easeOutCubic));
+	}
 
+	private void MoveEnd(){
+		isMove = false;
+		transform.position = purposePos;
+	}
 }

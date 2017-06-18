@@ -5,25 +5,29 @@ using UnityEngine;
 public class DiceInputHandler : Command {
 	public static List<Command> executedCommands = new List<Command>();
 
-	[SerializeField] private DiceController dice;
+	//[SerializeField] private DiceController dice;
 	private int commandCount = 0;
 
 	public Command HandleInput(){
 		if (Input.GetKeyDown (KeyCode.UpArrow)) {
-			executedCommands.Add (new MoveUp ());
+			Command cmd = new MoveUp();
+			executedCommands.Add (cmd);
 			return executedCommands [commandCount++];
 		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
-			executedCommands.Add (new MoveRight ());
+			Command cmd = new MoveRight();
+			executedCommands.Add (cmd);
 			return executedCommands [commandCount++];
 		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
-			executedCommands.Add (new MoveDown ());
+			Command cmd = new MoveDown();
+			executedCommands.Add (cmd);
 			return executedCommands [commandCount++];
 		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-			executedCommands.Add (new MoveLeft ());
+			Command cmd = new MoveLeft();
+			executedCommands.Add (cmd);
 			return executedCommands [commandCount++];
-		} else if (Input.GetKeyDown (KeyCode.Space)) {
+		} else if (Input.GetKey (KeyCode.Backspace)) {
 			if (commandCount > 0) {
-				executedCommands [commandCount - 1].Redo ();
+				executedCommands [commandCount - 1].Undo ();
 				commandCount--;
 			}
 		}
