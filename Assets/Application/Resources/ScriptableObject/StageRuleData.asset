@@ -11,4 +11,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65463639b0797496395f41bd324f3e15, type: 3}
   m_Name: StageRuleData
   m_EditorClassIdentifier: 
-  stageRule: []
+  stageRule:
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0
+  - redCount: 0
+    blueCount: 0
+    yellowCount: 0

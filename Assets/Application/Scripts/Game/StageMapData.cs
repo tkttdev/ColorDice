@@ -8,11 +8,10 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "StageMapData")]
 public class StageMapData : ScriptableObject {
 	public List<StageMapInfo> stageMapInfo = new List<StageMapInfo> ();
-}
-
-[System.Serializable]
-public class StageMapInfo{
-	public int width;
-	public int height;
-	public int[] map;
+	[System.Serializable]
+	public class StageMapInfo{
+		public int width = 1;
+		public int height = 1;
+		public int[] map = new int[1];
+	}
 }

@@ -24,7 +24,7 @@ public class DiceController : MonoBehaviour {
 		}
 	}
 
-	public void Move(Vector3 rotateDir, float speed = 1.2f){
+	public void Move(Vector3 rotateDir, float speed = 1.5f){
 		isMove = true;
 		purposePos = transform.position + rotateDir*sideLength;
 		iTween.MoveTo (gameObject, iTween.Hash ("x", purposePos.x, "z", purposePos.z, "oncomplete", "MoveEnd", "time", 1f / speed, "easeType", iTween.EaseType.easeOutCubic));
