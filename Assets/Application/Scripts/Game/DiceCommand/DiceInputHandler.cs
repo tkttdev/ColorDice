@@ -28,6 +28,7 @@ public class DiceInputHandler : Command {
 		} else if (Input.GetKey (KeyCode.Backspace)) {
 			if (commandCount > 0) {
 				executedCommands [commandCount - 1].Undo ();
+				executedCommands.RemoveAt (commandCount - 1);
 				commandCount--;
 			}
 		}
